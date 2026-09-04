@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import { Power, Radio, Wifi, Smartphone, Volume2, VolumeX, Zap, LogOut, Users } from "lucide-react";
+import { Power, Radio, Smartphone, Volume2, VolumeX, Zap, LogOut, Users } from "lucide-react";
 import { useState } from "react";
 
 interface ActionButtonsProps {
   isPowered: boolean;
   onPowerToggle: () => void;
   onCreateChannel: () => void;
-  onConnectivityMode: () => void;
   onPairedDevices: () => void;
   onSpeaker: () => void;
   onQuickActions: () => void;
@@ -15,31 +14,31 @@ interface ActionButtonsProps {
 }
 
 const ActionButtons = ({
-  isPowered, onPowerToggle, onCreateChannel, onConnectivityMode,
+  isPowered, onPowerToggle, onCreateChannel,
   onPairedDevices, onSpeaker, onQuickActions, speakerOn = true, inSquad = false,
 }: ActionButtonsProps) => {
   const buttons = [
     inSquad
-      ? { icon: LogOut, label: "Exit", action: onPowerToggle, active: false, accent: false }
-      : { icon: Power, label: "Power", action: onPowerToggle, active: isPowered, accent: true },
-    { icon: Radio, label: "Channel", action: onCreateChannel, active: false, accent: false },
-    { icon: Wifi, label: "Connect", action: onConnectivityMode, active: false, accent: false },
+      ? { icon: LogOut, label: "Exit", action: onPowerToggle, active: false, accent: false, span: "col-span-2" }
+      : { icon: Power, label: "Power", action: onPowerToggle, active: isPowered, accent: true, span: "col-span-2" },
+    { icon: Radio, label: "Channel", action: onCreateChannel, active: false, accent: false, span: "col-span-2" },
     inSquad
-      ? { icon: Users, label: "Members", action: onPairedDevices, active: false, accent: false }
-      : { icon: Smartphone, label: "Devices", action: onPairedDevices, active: false, accent: false },
+      ? { icon: Users, label: "Members", action: onPairedDevices, active: false, accent: false, span: "col-span-2" }
+      : { icon: Smartphone, label: "Devices", action: onPairedDevices, active: false, accent: false, span: "col-span-2" },
     {
       icon: speakerOn ? Volume2 : VolumeX,
       label: speakerOn ? "Speaker" : "Muted",
       action: onSpeaker,
       active: inSquad && speakerOn,
       accent: true,
+      span: "col-span-3",
     },
-    { icon: Zap, label: "Quick", action: onQuickActions, active: false, accent: false },
+    { icon: Zap, label: "Quick", action: onQuickActions, active: false, accent: false, span: "col-span-3" },
   ];
 
 
   return (
-    <div className="grid grid-cols-3 gap-3 px-5 py-3">
+    <div className="grid grid-cols-6 gap-3 px-5 py-3">
       {buttons.map((btn) => (
         <ActionButton key={btn.label} {...btn} />
       ))}
@@ -53,9 +52,10 @@ interface ActionButtonProps {
   action: () => void;
   active: boolean;
   accent: boolean;
+  span: string;
 }
 
-const ActionButton = ({ icon: Icon, label, action, active, accent }: ActionButtonProps) => {
+const ActionButton = ({ icon: Icon, label, action, active, accent, span }: ActionButtonProps) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -66,7 +66,7 @@ const ActionButton = ({ icon: Icon, label, action, active, accent }: ActionButto
       whileTap={{ scale: 0.93 }}
       className={`
         relative flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl
-        transition-all duration-150
+        transition-all duration-150 ${span}
         ${pressed ? "button-pressed" : "button-depth"}
         ${active && accent
           ? "bg-gradient-to-b from-primary to-display-warm"

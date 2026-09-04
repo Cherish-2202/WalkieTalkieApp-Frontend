@@ -75,6 +75,11 @@ export default {
           searching: "hsl(var(--status-searching))",
           off: "hsl(var(--status-off))",
         },
+        mode: {
+          bluetooth: "hsl(var(--mode-bluetooth))",
+          "wifi-direct": "hsl(var(--mode-wifi-direct))",
+          internet: "hsl(var(--mode-internet))",
+        },
         drawer: {
           bg: "hsl(var(--drawer-bg))",
           overlay: "hsl(var(--drawer-overlay))",

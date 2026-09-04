@@ -2,7 +2,7 @@ import { useCallback, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TopBar from "@/components/walkie/TopBar";
 import SideDrawer from "@/components/walkie/SideDrawer";
-import ModeStrip, { modes } from "@/components/walkie/ModeStrip";
+import AntennaModeDial from "@/components/walkie/AntennaModeDial";
 import SquadHub, { type Squad } from "@/components/walkie/SquadHub";
 import SquadRoom from "@/components/walkie/SquadRoom";
 import type { ConnectivityMode } from "@/components/walkie/DisplayPanel";
@@ -87,9 +87,6 @@ const Index = () => {
     setJoined(null);
   }, []);
 
-  const handleModeCycle = useCallback(() => {
-    setMode((prev) => modes[(modes.indexOf(prev) + 1) % modes.length]);
-  }, []);
 
   const createSquad = () =>
     toast({ title: "New squad", description: "Squad creation flow coming next." });
@@ -109,7 +106,7 @@ const Index = () => {
         <TopBar onMenuOpen={() => setDrawerOpen(true)} isPowered />
 
         <div className="mt-2">
-          <ModeStrip mode={mode} onChange={handleModeChange} />
+          <AntennaModeDial mode={mode} onChange={handleModeChange} />
         </div>
 
         <AnimatePresence mode="wait">
@@ -119,7 +116,6 @@ const Index = () => {
               squad={joined}
               mode={mode}
               onExit={() => setJoined(null)}
-              onModeCycle={handleModeCycle}
             />
           ) : (
             <motion.div
