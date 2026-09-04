@@ -10,10 +10,9 @@ interface SquadRoomProps {
   squad: Squad;
   mode: ConnectivityMode;
   onExit: () => void;
-  onModeCycle: () => void;
 }
 
-const SquadRoom = ({ squad, mode, onExit, onModeCycle }: SquadRoomProps) => {
+const SquadRoom = ({ squad, mode, onExit }: SquadRoomProps) => {
   const [talkingState, setTalkingState] = useState<TalkingState>("idle");
   const [memberIndex, setMemberIndex] = useState(0);
   const [wheelActive, setWheelActive] = useState(false);
@@ -67,7 +66,6 @@ const SquadRoom = ({ squad, mode, onExit, onModeCycle }: SquadRoomProps) => {
           isPowered
           onPowerToggle={onExit}
           onCreateChannel={() => touchWheel(3000)}
-          onConnectivityMode={onModeCycle}
           onPairedDevices={() => touchWheel(3000)}
           onSpeaker={() => setSpeakerOn((s) => !s)}
           onQuickActions={() => touchWheel(3000)}
