@@ -44,7 +44,7 @@ const SideScroller = ({ onStep, onPull, disabled, label = "PULL TO JOIN" }: Side
         className={`relative w-8 h-32 rounded-2xl bg-device-body-light flex flex-col items-center justify-center gap-[5px] select-none touch-none ${
           disabled ? "opacity-40" : "cursor-grab active:cursor-grabbing"
         }`}
-        style-boxshadow=""
+        >
       >
         <div
           className="absolute inset-0 rounded-2xl pointer-events-none"
