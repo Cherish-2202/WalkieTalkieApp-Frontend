@@ -48,9 +48,8 @@ const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="fixed left-0 top-0 bottom-0 z-50 w-[280px] bg-drawer-bg rounded-r-3xl overflow-hidden flex flex-col"
           >
-            {/* Profile Header */}
             <div className="p-6 pb-4">
-              <button onClick={onClose} className="mb-6">
+              <button onClick={onClose} className="mb-6 cursor-pointer">
                 <X className="w-5 h-5 text-card-foreground/60" />
               </button>
               <div className="flex items-center gap-3">
@@ -64,7 +63,6 @@ const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
               </div>
             </div>
 
-            {/* Menu */}
             <div className="flex-1 overflow-y-auto px-3 pb-6">
               {groups.map((group, gi) => (
                 <div key={group.key} className={gi > 0 ? "mt-5" : ""}>
@@ -78,7 +76,7 @@ const SideDrawer = ({ isOpen, onClose }: SideDrawerProps) => {
                         key={item.label}
                         whileHover={{ x: 4 }}
                         whileTap={{ scale: 0.97 }}
-                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-card-foreground/70 hover:bg-card-foreground/5 transition-colors"
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-card-foreground/70 hover:bg-card-foreground/5 transition-colors cursor-pointer"
                       >
                         <div className="w-8 h-8 rounded-lg bg-card-foreground/8 flex items-center justify-center">
                           <item.icon className="w-4 h-4" />

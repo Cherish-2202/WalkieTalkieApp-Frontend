@@ -30,7 +30,7 @@ const SquadHub = ({
   const active = squads[activeIndex];
 
   return (
-    <div className="relative mt-3">
+    <div className="relative mt-2">
       <div className="relative rounded-[32px] bg-device-body device-shadow overflow-hidden min-h-[430px] flex flex-col">
         {/* Highlighter bar */}
         <div className="px-4 pt-4">
@@ -86,7 +86,7 @@ const SquadHub = ({
           </div>
         </div>
 
-        {/* Squad list flowing under the highlighter */}
+        {/* Squad list */}
         <div className="relative flex-1 px-4 pt-4 pb-4 overflow-hidden">
           {isOnline ? (
             <div className="relative h-full overflow-hidden">
@@ -127,7 +127,6 @@ const SquadHub = ({
               <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-device-body to-transparent" />
             </div>
           ) : (
-            /* Offline: buttons live inside the container */
             <div className="h-full flex flex-col items-center justify-center gap-3">
               <p className="text-[11px] font-semibold uppercase tracking-widest text-card-foreground/30">
                 {mode === "bluetooth" ? "Bluetooth" : "Wi-Fi Direct"} · create on the spot
@@ -140,7 +139,6 @@ const SquadHub = ({
           )}
         </div>
 
-        {/* Pre-join controls (no PTT here) */}
         <div className="border-t border-card-foreground/5 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-status-ready" />
@@ -172,7 +170,7 @@ const ActionPill = ({
   <motion.button
     whileTap={{ scale: 0.96 }}
     onClick={onClick}
-    className={`flex items-center gap-3 rounded-2xl px-4 py-3 button-depth ${
+    className={`flex items-center gap-3 rounded-2xl px-4 py-3 button-depth cursor-pointer ${
       primary ? "bg-gradient-to-b from-primary to-display-warm" : "bg-walkie-button"
     }`}
   >

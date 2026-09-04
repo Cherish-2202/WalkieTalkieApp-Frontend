@@ -43,7 +43,7 @@ const SquadRoom = ({ squad, mode, onExit }: SquadRoomProps) => {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.94, y: 16 }}
       transition={{ type: "spring", damping: 24, stiffness: 260 }}
-      className="relative mt-3"
+      className="relative mt-2"
     >
       <div className="bg-device-body rounded-[32px] pb-5 device-shadow overflow-hidden">
         <div className="flex justify-center pt-2 pb-1">

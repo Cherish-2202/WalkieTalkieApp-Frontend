@@ -58,15 +58,8 @@ const MicBars = () => (
       <motion.div
         key={i}
         className="w-[3px] rounded-full bg-display-text/80"
-        animate={{
-          scaleY: [0.3, 1, 0.3],
-        }}
-        transition={{
-          duration: 0.5,
-          repeat: Infinity,
-          delay: i * 0.08,
-          ease: "easeInOut",
-        }}
+        animate={{ scaleY: [0.3, 1, 0.3] }}
+        transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.08, ease: "easeInOut" }}
         style={{ height: 16, transformOrigin: "bottom" }}
       />
     ))}
@@ -77,14 +70,12 @@ const DisplayPanel = ({
   status, talkingState, channelName, connectivityMode,
   pairedDevice, otherUser, isWheelActive, wheelDeviceIndex, pairedDevices,
 }: DisplayPanelProps) => {
-  const ConnIcon = connectivityIcons[connectivityMode];
+  const ConnIcon = connectivityIcons[connectivityMode] || Bluetooth;
   const isTalking = talkingState === "you-talking" || talkingState === "other-talking";
 
   return (
     <div className="relative mx-4 rounded-2xl overflow-hidden display-glow">
-      {/* Display background */}
       <div className="bg-gradient-to-br from-display to-display-warm p-4 min-h-[160px] flex flex-col justify-between">
-        {/* Top row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className={`w-2 h-2 rounded-full ${statusColors[status]}`}>
@@ -108,7 +99,6 @@ const DisplayPanel = ({
           </div>
         </div>
 
-        {/* Center content */}
         <AnimatePresence mode="wait">
           {isWheelActive ? (
             <motion.div
@@ -143,7 +133,7 @@ const DisplayPanel = ({
                       <span className="font-display font-bold text-display-text text-sm">
                         {device.name}
                       </span>
-                      <div className={`w-1.5 h-1.5 rounded-full ${device.online ? 'bg-status-ready' : 'bg-status-off'}`} />
+                      <div className={`w-1.5 h-1.5 rounded-full ${device.online ? "bg-status-ready" : "bg-status-off"}`} />
                     </motion.div>
                   );
                 })}
@@ -169,7 +159,6 @@ const DisplayPanel = ({
           )}
         </AnimatePresence>
 
-        {/* Bottom row */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             {isTalking && <MicBars />}

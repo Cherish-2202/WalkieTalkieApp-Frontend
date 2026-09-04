@@ -24,7 +24,6 @@ const DeviceWheel = ({ onScroll, isActive, deviceCount, currentIndex }: DeviceWh
         }}
         whileHover={{ backgroundColor: "hsl(240 8% 19%)" }}
       >
-        {/* Notches */}
         {Array.from({ length: notches }).map((_, i) => (
           <div
             key={i}
@@ -32,7 +31,6 @@ const DeviceWheel = ({ onScroll, isActive, deviceCount, currentIndex }: DeviceWh
           />
         ))}
 
-        {/* Active indicator */}
         {isActive && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -43,7 +41,6 @@ const DeviceWheel = ({ onScroll, isActive, deviceCount, currentIndex }: DeviceWh
         )}
       </motion.div>
 
-      {/* Position dots */}
       <div className="mt-2 flex flex-col gap-1">
         {Array.from({ length: Math.min(deviceCount, 5) }).map((_, i) => (
           <div

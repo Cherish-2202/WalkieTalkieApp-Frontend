@@ -87,7 +87,6 @@ const Index = () => {
     setJoined(null);
   }, []);
 
-
   const createSquad = () =>
     toast({ title: "New squad", description: "Squad creation flow coming next." });
   const joinByCode = () =>
@@ -105,7 +104,8 @@ const Index = () => {
       >
         <TopBar onMenuOpen={() => setDrawerOpen(true)} isPowered />
 
-        <div className="mt-2">
+        {/* Retro Steel Antenna mounted directly to the top-left shoulder of the walkie body */}
+        <div className="mt-1 -mb-1 px-1">
           <AntennaModeDial mode={mode} onChange={handleModeChange} />
         </div>
 
@@ -151,7 +151,7 @@ const Index = () => {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={joinByCode}
-                className="flex items-center gap-2 rounded-full bg-card px-5 py-3 button-depth"
+                className="flex items-center gap-2 rounded-full bg-card px-5 py-3 button-depth cursor-pointer"
               >
                 <LogIn className="w-4 h-4 text-card-foreground/70" />
                 <span className="text-sm font-semibold text-card-foreground/80">Join Squad</span>
@@ -159,7 +159,7 @@ const Index = () => {
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={createSquad}
-                className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary to-display-warm px-5 py-3 button-depth"
+                className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary to-display-warm px-5 py-3 button-depth cursor-pointer"
               >
                 <Plus className="w-4 h-4 text-primary-foreground" />
                 <span className="text-sm font-semibold text-primary-foreground">Create Squad</span>

@@ -9,11 +9,6 @@ interface SideScrollerProps {
   label?: string;
 }
 
-/**
- * Vertical thumb-wheel on the right edge.
- * Drag vertically  -> steps the highlighted item.
- * Pull horizontally -> elastic stretch, release past threshold triggers onPull().
- */
 const SideScroller = ({ onStep, onPull, disabled, label = "PULL TO JOIN" }: SideScrollerProps) => {
   const x = useMotionValue(0);
   const acc = useRef(0);
@@ -45,7 +40,6 @@ const SideScroller = ({ onStep, onPull, disabled, label = "PULL TO JOIN" }: Side
           disabled ? "opacity-40" : "cursor-grab active:cursor-grabbing"
         }`}
       >
-
         <div
           className="absolute inset-0 rounded-2xl pointer-events-none"
           style={{ boxShadow: "inset -2px 0 6px rgba(0,0,0,0.35), 3px 3px 10px rgba(0,0,0,0.45)" }}

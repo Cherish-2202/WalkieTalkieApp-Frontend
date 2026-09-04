@@ -36,7 +36,6 @@ const ActionButtons = ({
     { icon: Zap, label: "Quick", action: onQuickActions, active: false, accent: false, span: "col-span-3" },
   ];
 
-
   return (
     <div className="grid grid-cols-6 gap-3 px-5 py-3">
       {buttons.map((btn) => (
@@ -66,7 +65,7 @@ const ActionButton = ({ icon: Icon, label, action, active, accent, span }: Actio
       whileTap={{ scale: 0.93 }}
       className={`
         relative flex flex-col items-center justify-center gap-1.5 py-3 rounded-2xl
-        transition-all duration-150 ${span}
+        transition-all duration-150 cursor-pointer ${span}
         ${pressed ? "button-pressed" : "button-depth"}
         ${active && accent
           ? "bg-gradient-to-b from-primary to-display-warm"

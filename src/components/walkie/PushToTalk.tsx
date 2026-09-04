@@ -79,7 +79,6 @@ const PushToTalk = ({ isTalking, onPressStart, onPressEnd, disabled }: PushToTal
         </motion.button>
       </div>
 
-      {/* Label */}
       <motion.p
         animate={{ opacity: isTalking ? 1 : 0.5 }}
         className="mt-4 text-xs font-semibold tracking-wider uppercase text-card-foreground/50"
