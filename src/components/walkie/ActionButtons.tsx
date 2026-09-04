@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Power, Radio, Wifi, Smartphone, Volume2, Zap } from "lucide-react";
+import { Power, Radio, Wifi, Smartphone, Volume2, VolumeX, Zap, LogOut, Users } from "lucide-react";
 import { useState } from "react";
 
 interface ActionButtonsProps {
@@ -10,20 +10,33 @@ interface ActionButtonsProps {
   onPairedDevices: () => void;
   onSpeaker: () => void;
   onQuickActions: () => void;
+  speakerOn?: boolean;
+  inSquad?: boolean;
 }
 
 const ActionButtons = ({
   isPowered, onPowerToggle, onCreateChannel, onConnectivityMode,
-  onPairedDevices, onSpeaker, onQuickActions,
+  onPairedDevices, onSpeaker, onQuickActions, speakerOn = true, inSquad = false,
 }: ActionButtonsProps) => {
   const buttons = [
-    { icon: Power, label: "Power", action: onPowerToggle, active: isPowered, accent: true },
+    inSquad
+      ? { icon: LogOut, label: "Exit", action: onPowerToggle, active: false, accent: false }
+      : { icon: Power, label: "Power", action: onPowerToggle, active: isPowered, accent: true },
     { icon: Radio, label: "Channel", action: onCreateChannel, active: false, accent: false },
     { icon: Wifi, label: "Connect", action: onConnectivityMode, active: false, accent: false },
-    { icon: Smartphone, label: "Devices", action: onPairedDevices, active: false, accent: false },
-    { icon: Volume2, label: "Speaker", action: onSpeaker, active: false, accent: false },
+    inSquad
+      ? { icon: Users, label: "Members", action: onPairedDevices, active: false, accent: false }
+      : { icon: Smartphone, label: "Devices", action: onPairedDevices, active: false, accent: false },
+    {
+      icon: speakerOn ? Volume2 : VolumeX,
+      label: speakerOn ? "Speaker" : "Muted",
+      action: onSpeaker,
+      active: inSquad && speakerOn,
+      accent: true,
+    },
     { icon: Zap, label: "Quick", action: onQuickActions, active: false, accent: false },
   ];
+
 
   return (
     <div className="grid grid-cols-3 gap-3 px-5 py-3">
